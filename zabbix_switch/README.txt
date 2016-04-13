@@ -1,0 +1,4 @@
+全局Macros默认团体名为public
+如果需要修改需要在主机上设置为对应的团体名
+Macro_key:{$SNMP_COMMUNITY}
+Macro_value:自定义值

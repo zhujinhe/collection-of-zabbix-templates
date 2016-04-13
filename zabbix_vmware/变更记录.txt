@@ -1,0 +1,2 @@
+变更记录
+2015年05月06日:将要Template Virt VMware Hypervisor模板中的discovery rules禁用掉，不再监控扫描出的虚拟机状态。

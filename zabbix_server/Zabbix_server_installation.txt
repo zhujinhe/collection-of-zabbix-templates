@@ -1,0 +1,93 @@
+zabbix_server 2.4安装,步骤请参照官方文档的介绍.
+rpm包安装:https://www.zabbix.com/documentation/2.4/manual/installation/install_from_packages
+源码安装:https://www.zabbix.com/documentation/2.4/manual/installation/install
+安装环境要求:https://www.zabbix.com/documentation/2.4/manual/installation/requirements
+下面是源码安装的简要介绍:
+基本的环境要求:
+OpenIPMI libssh2 fping libcurl libiksemel net-snmp
+MySQL	5.0.3 or later
+Apache	1.3.12 or later
+PHP	5.3.0 or later
+PHP extension :gd bcmath ctype libXML xmlreader xmlwriter session sockets mbstring gettext mysqli 
+
+yum install OpenIPMI libssh2 fping nmap libcurl libiksemel net-snmp net-snmp-devel mysql mysql-devel mysql-server httpd php php-mysql php-gd php-bcmath php-xml php-xmlreader php-xmlwriter php-session php-net-socket php-mbstring php-gettext curl curl-devel perl-DBI 
+#提示无fping libiksemel php-net-socket包.fping需要源码安装,libiksemel是Jabber相关的,暂时用不到,php-net-socket:php默认编译参数中已包括--enable-sockets,此项可省略.
+
+处理完依赖问题后安装需要如下步骤.
+
+1 Download the source archive
+tar zxvf zabbix-2.4.3.tar.gz 
+2 Create user account
+groupadd zabbix
+useradd -g zabbix zabbix
+3 Create Zabbix database
+
+shell> mysql -u<username> -p<password>
+mysql> create database zabbix character set utf8 collate utf8_bin;
+mysql> quit;
+shell> mysql -u<username> -p<password> zabbix < database/mysql/schema.sql
+# stop here if you are creating database for Zabbix proxy
+shell> mysql -u<username> -p<password> zabbix < database/mysql/images.sql
+shell> mysql -u<username> -p<password> zabbix < database/mysql/data.sql
+
+4 Configure the sources
+yum install gcc libxml2 libxml2-devel
+./configure --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2
+5 Make and install everything
+make install
+6 Review and edit configuration files
+
+7 Start up the daemons
+zabbix_server
+zabbix_agentd
+2 Installing Zabbix web interface
+
+
+FAQ:
+1.zabbix server is not running: the information displayed may not be current.
+检查zabbix的数据库连接文件里的配置是否正确.<zabbix php dir>/conf/zabbix.conf.php
+每次变更配置需要重启zabbix_server才能生效.
+2.zabbix如何查看错误日志
+源码安装默认日志位置:/tmp/zabbix_server.log
+rpm默认日志目录位置:/var/log/zabbix/
+3.错填提示:cannot send list of active checks to [127.0.0.1]: host [Zabbix server] not monitored
+(1)检查端口是否已开启
+(2)检查是否已打开防火墙，已打开，请加例外, 或者关闭防火墙
+(3)服务端的主机名必须与客户端Hostname一样
+(4)关闭SELinux(Security Enhanced Linux[安全加的 Linux]) 
+    gedit /etc/sysconfig/selinux
+    修改为：SELINUX=disabled
+
+安装fping:
+官方网站地址:http://fping.org/
+git地址:https://github.com/schweikert/fping
+软件包地址:http://fping.org/dist/fping-3.10.tar.gz
+Installation
+------------
+If you want to install fping from source, proceed as follows:
+
+1. Run ./configure with the correct arguments
+   (see: ./configure --help)
+2. Run make; make install
+3. Make fping either setuid, or, if under Linux:
+   sudo setcap cap_net_raw+ep fping
+4. Have a look at the fping(8) manual for usage help
+   (fping -h will also give a minimal help output)
+
+ # ./configure --prefix=/usr/local --enable-ipv4 --enable-ipv6
+ # make
+ # make install
+ # sudo setcap cap_net_raw+ep /usr/local/bin/fping*
+
+ # zabbix配置文件中fping默认位置为/usr/sbin/fping,所以制作个软连接.
+ # ln -s /usr/local/sbin/fping /usr/sbin/fping
+ # ln -s /bin/traceroute /usr/bin/traceroute
+
+
+ 安装zabbix-java-gateway:
+官方介绍JMX监控 https://www.zabbix.com/documentation/2.4/manual/config/items/itemtypes/jmx_monitoring
+官方介绍 https://www.zabbix.com/documentation/2.4/manual/concepts/java
+zabbix_bug_issue https://support.zabbix.com/browse/ZBX-5326
+中文介绍监控java(采用此方法) http://www.aikaiyuan.com/2993.html
+tomcat官方介绍JMX http://tomcat.apache.org/tomcat-8.0-doc/monitoring.html
+关于LifeCycle Listener的介绍:http://tomcat.apache.org/tomcat-8.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener

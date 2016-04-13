@@ -1,0 +1,22 @@
+Sangfor VPN auto discovery
+
+本模板实现功能:
+在sharepoint中获取指定数据, 导入到生成json导入到zabbix的自动发现中。
+
+本模板的基本思路:
+Step1.通过自定义key:network.sangfor.discovery调用getSangforInfoAutoDiscovery.py脚本输出json格式的返回结果。
+Step2.通过Discovery rules的key:network.sangfor.discovery和正则结合得到{#VPN.GATEWAY}的macro.
+Step3.添加Discovery Role中的Item Prototypes和Trigger Prototypes等组成自动发现项.
+Step4.将模板链接到zabbix server上.这样zabbix server就会通过icmp测试各个网关.
+
+自定义监控项: network.sangfor.discovery
+
+备注:实际情况这个正则未使用
+Sangfor Gateway for discovery
+^((?:(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d))))$
+[Result is TRUE]
+
+
+系统自带自动发现的Json输出示例:
+zabbix_get  -s 172.16.0.136 -k system.cpu.discovery
+{"data":[{"{#CPU.NUMBER}":0,"{#CPU.STATUS}":"online"},{"{#CPU.NUMBER}":1,"{#CPU.STATUS}":"online"},{"{#CPU.NUMBER}":2,"{#CPU.STATUS}":"online"},{"{#CPU.NUMBER}":3,"{#CPU.STATUS}":"online"}]}

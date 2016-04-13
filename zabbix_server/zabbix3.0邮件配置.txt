@@ -1,0 +1,17 @@
+zabbix3.0邮件配置:
+Administration: Media types
+Name: Email
+Type: Email
+SMTP server: mail.homelink.com.cn
+SMTP server port: 25
+SMTP helo: mail.homelink.com.cn
+SMTP mail: zhujh2@homelink.com.cn
+Connection security: None
+Authentication: Normal password
+Username: zhujh2@homelink.com.cn
+Password: (填入密码)
+Enable: True
+
+备注:
+Connection security是否加密取决于服务器端口的设置,注意这里指的并不是网页版https的加密方式,而是SMTP的加密方式。
+SMTP mail有的服务器是需要填写完整的邮件地址。

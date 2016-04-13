@@ -1,0 +1,28 @@
+首先介绍本机测试方法:
+zabbix_agentd -c --config <config-file> -t --test <item key> 
+例如:zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf -t net.tcp.port[172.16.5.100,80]
+检查端口连通性有下面几个常用item.
+net.tcp.listen[port]                   Checks if this TCP port is in LISTEN state.
+net.tcp.port[<ip>,port]                Check, if it is possible to make TCP connection to port number port.
+net.tcp.service[service,<ip>,<port>]   Checks if service is running and accepting TCP connections
+net.udp.listen[port]                   Checks if this UDP port is in LISTEN state.
+web.page.get[host,<path>,<port>]       Get content of web page.
+web.page.regexp[host,<path>,<port>,<regexp>,<length>,<output>]    Find string on a web page.
+
+应用场景:
+在web服务器检查mysql服务器3306端口是否可以建立TPC连接.返回0表示服务是down，1表示服务运行
+net.tcp.service[tcp,172.16.4.95,3306]
+检查是否可以连接LDAP端口
+net.tcp.service[tcp,172.16.3.124,389]
+或net.tcp.service[ldap,172.16.3.124,389]
+zabbix web ui中的host中添加item,后者制作Template,然后host连接到模板,下面以制作模板为例:
+Type = Simple Check
+key = net.tcp.service[ldap,172.16.3.124,389] 
+Show value = Service state
+zabbix web ui中添加triger:
+Name = {HOST.NAME}can NOT connect to LDAP service 172.16.4.124
+Expression = {Template APP 172.16.4.124 LDAP Service Check:net.tcp.service[ldap,172.16.3.124,389].max(#3)}=0
+Severity = Average
+Enabled = True
+具体item介绍参考文章:https://www.zabbix.com/documentation/2.4/manual/config/items/itemtypes/zabbix_agent
+

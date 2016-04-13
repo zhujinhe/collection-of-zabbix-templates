@@ -1,0 +1,4 @@
+build
+dist/
+pyzabbix.egg-info/
+pyzabbix/*.pyc

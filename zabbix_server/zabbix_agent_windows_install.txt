@@ -1,0 +1,18 @@
+Windows服务器安装zabbix_agent的步骤:
+0.查看系统是32位或者64位:我的电脑-右键属性-常规-系统描述里是否有x64
+1.将zabbix_agent的文件夹拷贝到C:\Program Files\zabbix目录下
+2.编辑conf/zabbix_agentd.win.conf(举例)
+Server=172.16.0.136 #IP地址由127.0.0.1改为zabbix服务器IP
+Hostname=bj-call-cic001 #被监控服务器主机名,查看方法进入cmd模式,输入hostname
+3.在cmd窗口执行如下命令，把zabbix_agentd注册为windows服务.
+32位:
+"c:\Program Files\zabbix\bin\win32\zabbix_agentd.exe" --config "c:\Program Files\zabbix\conf\zabbix_agentd.win.conf" --install
+64位:
+"c:\Program Files\zabbix\bin\win64\zabbix_agentd.exe" --config "c:\Program Files\zabbix\conf\zabbix_agentd.win.conf" --install
+4.启动zabbix_agentd服务
+在cmd窗口输入(引号不能省略) net start "Zabbix Agent"
+或者在管理工具-服务-中找到Zabbix Agent,点击启动.
+
+参考:
+https://www.zabbix.com/documentation/2.4/manual/appendix/install/windows_agent
+http://os.51cto.com/art/201103/251791.htm

@@ -1,0 +1,1 @@
+1.对于不确定数量的端口连通性这种检测通过Discovery Rules设置.在模板中定义Item|TriggerGraph prototypes和Filters规则.在被监控端通过自定义的脚本输出Json Object.

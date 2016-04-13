@@ -1,0 +1,117 @@
+zabbix-web由RPM改为由源码编译apache和php的方法
+
+zabbix针对PHP的需求
+Current value	Required
+PHP version	5.6.13	5.3.0	OK	
+PHP option memory_limit	256M	128M	OK
+PHP option post_max_size	16M	16M	OK
+PHP option upload_max_filesize	8M	2M	OK
+PHP option max_execution_time	300	300	OK
+PHP option max_input_time	300	300	OK
+PHP time zone	Asia/Shanghai	 	OK
+PHP databases support	MySQL		OK
+PHP bcmath	on	 	OK
+PHP mbstring	on	 	OK
+PHP mbstring.func_overload	off	off	OK
+PHP always_populate_raw_post_data	on	off	Fail
+PHP sockets	off	 	Fail
+PHP gd	2.1.0	2.0	OK
+PHP gd PNG support	on	 	OK
+PHP gd JPEG support	on	 	OK
+PHP gd FreeType support	off	 	Fail
+PHP libxml	2.7.6	2.6.15	OK
+PHP xmlwriter	on	 	OK
+PHP xmlreader	on	 	OK
+PHP ctype	on	 	OK
+PHP session	on	 	OK
+PHP session auto start	off	off	OK
+PHP gettext	off	 	Warning
+
+
+安装apache
+tar zxvf apr-1.5.2.tar.gz
+cd apr-1.5.2
+./configure --prefix=/usr/local/apr 
+make
+make install
+
+
+tar zxvf apr-util-1.5.4.tar.gz
+cd apr-util-1.5.4
+./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+make
+make install
+
+
+tar zxvf pcre-8.37.tar.gz
+./configure --prefix=/usr/local/pcre
+make
+make install
+
+tar zxvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=/usr/local/zlib
+make
+make install
+
+
+tar zxvf httpd-2.4.16.tar.gz
+cd /usr/local/src/httpd-2.4.16/srclib
+cp -r ../../apr-1.5.2 apr
+cp -r ../../apr-util-1.5.4 apr-util
+
+cd httpd-2.4.16
+ ./configure --prefix=/usr/local/apache2 --sysconfdir=/etc/apache2 --with-z=/usr/local/zlib --with-included-apr --disable-userdir --enable-so --enable-rewrite=shared --enable-deflate=shared --enable-expires=shared --enable-static-support  --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --with-pcre=/usr/local/pcre
+make
+make install
+
+安装php
+
+yum install libxml2 libxml2-devel curl curl-devel libjpeg libjpeg-devel libpng libpng-devel libmcrypt libmcrypt-devel libtool-ltdl-devel
+
+tar jxvf freetype-2.5.5.tar.bz2
+freetype-2.5.5
+./configure --prefix=/usr/local/freetype --enable-shared
+make
+make install
+
+tar zxvf php-5.6.13.tar.gz
+cd php-5.6.13
+./configure --prefix=/usr/local/php -with-apxs2=/usr/local/apache2/bin/apxs --with-curl --with-mcrypt --enable-mbstring --with-iconv --with-gd -with-jpeg-dir=/usr/local/lib --enable-pdo --with-pdo-mysql=mysqlnd --with-mysqli=mysqlnd --with-mysql=mysqlnd --with-gettext --enable-sockets --with-freetype-dir=/usr/local/freetype --enable-bcmath
+make
+make install
+
+配置apache和php
+cd /etc/apache2/extra
+cp /etc/httpd/conf.d/php.conf  ./
+cp /etc/httpd/conf.d/zabbix.conf  ./
+/etc/apache2/httpd.conf中添加如下行:
+ServerName 10.12.1.27:80
+# PHP support added by homelink
+Include /etc/apache2/extra/php.conf
+# zabbix support added by homelink
+Include /etc/apache2/extra/zabbix.conf
+修改http的启动用户:/etc/apache2/httpd.conf
+User apache
+Group apache
+修改以满足zabbix的需求:
+vim /usr/local/php/lib/php.ini
+always_populate_raw_post_data = -1
+或者:
+/etc/httpd/conf.d/zabbix.conf中添加:
+php_value always_populate_raw_post_data -1
+
+以上设置完毕后,启动apache
+/usr/local/apache2/bin/apachectl -k restart
+
+便利性修改:
+cp /usr/local/apache2/bin/apachectl /etc/init.d/apache2
+chmod +x /etc/init.d/apache2
+chkconfig --add apache2
+chkconfig apache2 on
+
+参考文章:
+http://www.cnblogs.com/sink_cup/archive/2010/11/22/centos_apache_php_pdo_mysql_curl_json_gd.html
+http://blog.snsgou.com/post-677.html
+http://blog.163.com/wb_zhaoyuwei/blog/static/183075439201341511589479/
+

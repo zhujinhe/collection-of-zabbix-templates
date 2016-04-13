@@ -1,0 +1,27 @@
+准备:
+查看当前Tomcat的版本.sh /path/to/your/tomcat/bin/catalina.sh version
+查找与当前tomcat对应的catalina-jmx-remote.jar下载地址:$URL,via http://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina-jmx-remote
+确认本机的第一个内网IP
+查看tomcat的协议模式. 参考:http://172.27.4.67/zhujinhe/operation-manual/blob/master/tomcat/NIO-BIO-APR.txt
+
+step 1  修改bin/catalina.sh,非注释的第一行增加如下(需要按照情况修改IP)
+CATALINA_OPTS="-Dcom.sun.management.jmxremote \
+               -Dcom.sun.management.jmxremote.authenticate=false \
+               -Dcom.sun.management.jmxremote.ssl=false \
+               -Djava.rmi.server.hostname=172.27.4.105"
+
+step2  conf/server.xml
+在<Listener className=""/>模块后面后面增加一行
+<Listener className="org.apache.catalina.mbeans.JmxRemoteLifecycleListener" rmiServerPortPlatform="12346" rmiRegistryPortPlatform="12345"/>
+
+step3  下载对应tomcat版本的jar包.例如Tomcat版本为8.0.18
+cd /path/to/your/tomcat/lib/
+wget $URL -O catalina-jmx-remote.jar
+
+step4  防火墙放行TCP 10050和12345和12346端口
+
+服务器端配置:
+增加JMX interface:IP of zabbix-agent:10050
+将tomcat对应模式的模板link到主机上.
+
+Tomcat官方下载站:http://mirror.bit.edu.cn/apache/tomcat/

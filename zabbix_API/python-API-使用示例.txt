@@ -1,0 +1,95 @@
+API是属于web前端的一部分。
+zabbix php API 官方文档地址为:https://www.zabbix.com/documentation/2.4/manual/api
+get方法的通用参数:https://www.zabbix.com/documentation/2.4/manual/api/reference_commentary#common_get_method_parameters
+
+zabbix python API 使用的是pyzabbix 地址为:http://github.com/lukecyca/pyzabbix
+pyzabbix使用了python的requests, json模块
+
+Zabbix web页面使用了哪些接口可以通过Web界面的debug模式查看。包括传入参数和输出结果都会显示。
+每个API的Object可以在zabbix的官网API的_object页面查到如:https://www.zabbix.com/documentation/2.4/manual/api/reference/host/object
+出入参数格式的介绍:https://www.zabbix.com/documentation/2.4/manual/api/reference_commentary
+
+
+以trigger.get为例:
+json使用trigger.get输入:
+# Retrieve the ID, name and severity of all triggers in problem state and sort them by severity in descending order.
+{
+    "jsonrpc": "2.0",
+    "method": "trigger.get",
+    "params": {
+        "output": [
+            "triggerid",
+            "description",
+            "priority"
+        ],
+        "filter": {
+            "value": 1
+        },
+        "sortfield": "priority",
+        "sortorder": "DESC"
+    },
+    "auth": "038e1d7b1735c6a5436ee9eae095879e",
+    "id": 1
+}
+
+json使用trigger.get输出:
+{
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "triggerid": "13907",
+            "description": "Zabbix self-monitoring processes < 100% busy",
+            "priority": "4"
+        },
+        {
+            "triggerid": "13824",
+            "description": "Zabbix discoverer processes more than 75% busy",
+            "priority": "3"
+        }
+    ],
+    "id": 1
+}
+
+pyzabbix使用trigger.get输入:
+# Get a list of all issues (AKA tripped triggers)
+triggers = zapi.trigger.get(only_true=1,
+    skipDependent=1,
+    monitored=1,
+    active=1,
+    output='extend',
+    expandDescription=1,
+    expandData='host',
+)
+#具体使用哪些参数需要根据实际情况确定。
+pyzabbix使用trigger.get输出:
+u'status': u'0', 
+u'hostname': u'lpjgcjdb', 
+u'description': u'Free disk space is less than 20% on volume /'
+
+
+
+关于API中Type为query的用法:
+query默认的属性为extend, 会输出全部属性值, 如果只想输出某特定的属性, 需要设定query为['attr1']或者['arrt1', 'attr2']
+下面列出extend和['name']的具体差异实例.
+注意:尽管query只设置了['name'], groupid的值.注意是['name']不是'name'
+selectGroups='extend'
+
+{u'status': u'0', u'description': u'Less than 25% free in the trends cache', u'state': u'0', u'url': u'', u'type': u'0', u'templateid': u'13019', u'lastchange': u'1432010696', u'value': u'1', u'priority': u'3', u'triggerid': u'13490', u'flags': u'0', u'comments': u'', u'groups': [{u'internal': u'0', u'flags': u'0', u'groupid': u'2', u'name': u'Linux servers'}, {u'internal': u'0', u'flags': u'0', u'groupid': u'4', u'name': u'Zabbix servers'}], u'error': u'', u'expression': u'{12899}<25'}
+
+selectGroups=['name']
+{u'status': u'0', u'description': u'Less than 25% free in the trends cache', u'state': u'0', u'url': u'', u'type': u'0', u'templateid': u'13019', u'lastchange': u'1432010696', u'value': u'1', u'priority': u'3', u'triggerid': u'13490', u'flags': u'0', u'comments': u'', u'groups': [{u'groupid': u'2', u'name': u'Linux servers'}, {u'groupid': u'4', u'name': u'Zabbix servers'}], u'error': u'', u'expression': u'{12899}<25'}
+
+selectGroups=['name','flags']
+{u'status': u'0', u'description': u'Less than 25% free in the trends cache', u'state': u'0', u'url': u'', u'type': u'0', u'templateid': u'13019', u'lastchange': u'1432010696', u'value': u'1', u'priority': u'3', u'triggerid': u'13490', u'flags': u'0', u'comments': u'', u'groups': [{u'flags': u'0', u'groupid': u'2', u'name': u'Linux servers'}, {u'flags': u'0', u'groupid': u'4', u'name': u'Zabbix servers'}], u'error': u'', u'expression': u'{12899}<25'}
+
+关于API中Type为object的用法:
+比如search的Type为object,描述Return results that match the given wildcard search.Accepts an array, where the keys are property names, and the values are strings to search for. If no additional options are given, this will perform a LIKE “%…%” search.Works only for string and text fields.
+
+比如想查找key_的值中包含关键字cpu的items(与CPU返回结果一致)
+search={'key_':'cpu'} 或者search=({'key_':'cpu'})返回结果只有'key_'值中含有cpu的结果.
+备注:search=[{'key_':'cpu'}]从结果看显示所有结果,起不到过滤作用。也不知道为什么.search={'itemid':'23303'}这种也起不到过滤作用，不知道为什么。
+
+
+
+
+

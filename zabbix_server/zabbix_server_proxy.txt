@@ -1,0 +1,13 @@
+亦庄的监控proxy地址:172.27.4.142
+
+1.服务器端的搭建.
+搭建方法与主监控类似,只有如下区别
+Proxy中安装zabbix-proxy对应主监控的zabbix-server
+数据库中导入表只需要schema.sql,其他2个不需要导入.
+不需要安装web-interface
+需要在主监控web界面上Administration--Proxies中--Cerete Proxy.Proxy Mode本实例中为Active,然后选中使用代理节点的主机.
+
+2.客户端的修改,需要在zabbix-agent配置文件中使用的节点中增加Proxy的地址.
+
+sed -i "s/172.16.0.136/172.16.0.136,172.27.4.142/g" /etc/zabbix/zabbix_agentd.conf
+/etc/init.d/zabbix-agent restart

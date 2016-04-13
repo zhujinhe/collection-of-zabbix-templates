@@ -1,0 +1,28 @@
+Temp SNMP Data Domain
+全局宏{$SNMP_COMMUNITY}
+
+Value Mapping for use with Template SNMP Data Domain
+Data Domain DiskState
+1 ⇒ OK 
+2 ⇒ Unknown
+3 ⇒ Absent
+4 ⇒ Failed
+Data Domain FanLevel
+0 ⇒ Unknown
+1 ⇒ Low
+2 ⇒ Medium
+3 ⇒ High
+Data Domain FanStatus
+0 ⇒ Not Found
+1 ⇒ OK
+2 ⇒ Fail
+Data Domain SensorStatus
+0 ⇒ Failed
+1 ⇒ OK
+2 ⇒ Not Found
+3 ⇒ Over Heat Warning
+4 ⇒ Over Heat Critical
+Data Domain VtlLibraryStatus
+0 ⇒ Unknow
+1 ⇒ Online
+2 ⇒ Offline

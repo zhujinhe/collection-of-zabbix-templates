@@ -1,0 +1,20 @@
+下面几个需要考虑设置为Macros
+Apache_connect_Tomcat的3种协议:ajp_proxy, mod_jk, http_proxy
+HTTP的4中协议:nio,bio,bio2,apr
+
+##############################################
+Template JMX Tomcat With Macros中自带的宏和默认值如下:
+{$AJP_CONNECTOR_HANDLE}:bio
+{$AJP_CONNECTOR_PORT}:8009
+{$HTTP_CONNECTOR_HANDLE}:bio
+{$HTTP_CONNECTOR_PORT}:8080
+{$SSL_CONNECTOR_HANDLE}:bio
+{$SSL_CONNECTOR_PORT}:8443
+{$SERVICE_HOST_NAME}:localhost
+{$SERVICE_HOST_PATH}:/
+
+模板使用方法:
+将主机连接到模板Template JMX Tomcat With Macros,如果主机http使用的是8080端口,bio模式,SSL/AJP使用状态与模板相同则可以不做修改.
+如果主机HTTP使用模式为nio,或者使用其他端口号,则在主机上添加对应的宏即可.
+
+使用何种协议和端口可以在conf/server.xml中查到.
