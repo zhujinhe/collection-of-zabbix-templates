@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "{#VHOSTNAME}": "/",
+            "{#QUEUE_NAME}": "bi_execute",
+            "{#ZBX_AVERAGE}": 200,
+            "{#ZBX_WARNING}": 100,
+            "{#ZBX_INFO}": 20
+        }
+    ]
+}

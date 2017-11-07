@@ -56,6 +56,24 @@ class RabbitMQAPI(object):
                     logging.debug('Discovered queue '+queue['vhost']+'/'+queue['name'])
                     break
         return queues
+        
+    def list_queues_limit(self, config_filename='queue_rate_limit.json'):
+        """
+        List queue limit of RabbitMQ queue.
+        """
+        elements = []
+      
+        with open(config_filename, 'r') as f:
+            rate_limit_conf = json.loads(f.read())
+        all_queues = self.call_api('queues') or []
+    
+        for queue in all_queues:
+            element = {'{#VHOSTNAME}': queue['vhost'], '{#QUEUE_NAME}': queue['name']}
+            if queue['name'] in rate_limit_conf:
+                element.update(rate_limit_conf[queue['name']])
+                elements.append(element)
+   
+        return elements
 
     def list_nodes(self):
         '''Lists all rabbitMQ nodes in the cluster'''
@@ -155,7 +173,7 @@ class RabbitMQAPI(object):
 
 def main():
     '''Command-line parameters and decoding for Zabbix use/consumption.'''
-    choices = ['list_queues', 'list_nodes', 'queues', 'check_aliveness',
+    choices = ['list_queues','list_queues_limit', 'list_nodes', 'queues', 'check_aliveness',
                'server']
     parser = optparse.OptionParser()
     parser.add_option('--username', help='RabbitMQ API username',
@@ -193,6 +211,8 @@ def main():
         filters = [filters]
     if options.check == 'list_queues':
         print json.dumps({'data': api.list_queues(filters)})
+    if options.check == 'list_queues_limit':
+        print json.dumps({'data': api.list_queues_limit('queue_rate_limit.json')})
     elif options.check == 'list_nodes':
         print json.dumps({'data': api.list_nodes()})
     elif options.check == 'queues':

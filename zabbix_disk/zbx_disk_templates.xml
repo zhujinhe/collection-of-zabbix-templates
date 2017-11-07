@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2017-11-07T07:38:46Z</date>
+    <date>2017-11-07T07:39:25Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template App Redis LLD Service</template>
-            <name>Template App Redis LLD Service</name>
+            <template>Template Disk Performance</template>
+            <name>Template Disk Performance</name>
             <description/>
             <groups>
                 <group>
@@ -19,18 +19,18 @@
             </groups>
             <applications>
                 <application>
-                    <name>Redis_{#REDIS_PORT}</name>
+                    <name>Disk Performance</name>
                 </application>
             </applications>
             <items/>
             <discovery_rules>
                 <discovery_rule>
-                    <name>Redis port discovery</name>
+                    <name>Disk discovery</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>redis.discovery</key>
-                    <delay>60</delay>
+                    <key>custom.vfs.discover_disks</key>
+                    <delay>3600</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -58,19 +58,19 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Blocked clients_{#REDIS_PORT}</name>
+                            <name>Disk:$1:IO:Currently Active</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},blocked_clients]</key>
+                            <key>custom.vfs.dev.io.active[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
+                            <units>io</units>
                             <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -90,30 +90,32 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #12&#13;
+Number of I/Os currently in progress.&#13;
+The only field that should go to zero. Incremented as requests are given to appropriate struct request_queue and decremented as they finish.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>commands_processed_per_sedond_{#REDIS_PORT}</name>
+                            <name>Disk:$1:IO:ms</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, total_commands_processed,s]</key>
+                            <key>custom.vfs.dev.io.ms[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
+                            <units>ms</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -133,116 +135,31 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #13&#13;
+Number of milliseconds spent doing I/Os. This field increases so long as field #12 (custom.vfs.dev.io.active) is nonzero.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Connected clients_{#REDIS_PORT}</name>
+                            <name>Disk:$1:IO:Weight:ms</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},connected_clients]</key>
+                            <key>custom.vfs.dev.weight.io.ms[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Connected_slave_{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, connected_slave]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>connections_received_per_second{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, total_connections_received,s]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
+                            <units>ms</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -262,31 +179,77 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #14&#13;
+Weighted number of milliseconds spent doing I/Os.&#13;
+This field is incremented at each I/O start, I/O completion, I/O merge, or read of these stats by the number of I/Os in progress (field 12) times the number of milliseconds spent doing I/O since the last update of this field.  This can provide an easy measure of both I/O completion time and the backlog that may be accumulating.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>evicted_keys_{#REDIS_PORT}</name>
+                            <name>Disk:$1:Read:Bytes/sec</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, evicted_keys]</key>
+                            <key>custom.vfs.dev.read.sectors[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
+                            <units>B/sec</units>
+                            <delta>1</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>512</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Field #6&#13;
+This is the total number of sectors read successfully.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk Performance</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Disk:$1:Read:Merged</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>custom.vfs.dev.read.merged[{#DEVICENAME}]</key>
+                            <delay>60</delay>
+                            <history>15</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Ops/s</units>
+                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -305,31 +268,33 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #5&#13;
+Number of reads merged.&#13;
+Reads and writes which are adjacent to each other may be merged for efficiency. Thus two 4K reads may become one 8K read before it is ultimately handed to the disk, and so it will be counted (and queued) as only one I/O.  This field lets you know how often this was done.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>expired_keys_{#REDIS_PORT}</name>
+                            <name>Disk:$1:Read:ms</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, expired_keys]</key>
+                            <key>custom.vfs.dev.read.ms[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
+                            <units>ms</units>
+                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -348,31 +313,33 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #7&#13;
+Number of milliseconds spent reading&#13;
+This is the total number of milliseconds spent by all reads (as measured from __make_request() to end_that_request_last()).</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>last_save_time_{#REDIS_PORT}</name>
+                            <name>Disk:$1:Read:Ops per second</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, last_save_time]</key>
+                            <key>custom.vfs.dev.read.ops[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
+                            <units>ops/s</units>
+                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -391,31 +358,76 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #4&#13;
+This is the total number of reads completed successfully.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Port_status_{#REDIS_PORT}</name>
+                            <name>Disk:$1:Write:Bytes/sec</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
-                            <key>net.tcp.port[{#REDIS_IP},{#REDIS_PORT}]</key>
+                            <key>custom.vfs.dev.write.sectors[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
+                            <units>B/sec</units>
+                            <delta>1</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>512</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Field #10&#13;
+This is the total number of sectors written successfully.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk Performance</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Disk:$1:Write:Merged</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>custom.vfs.dev.write.merged[{#DEVICENAME}]</key>
+                            <delay>60</delay>
+                            <history>15</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Ops/s</units>
+                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -434,31 +446,33 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #9&#13;
+Number of writes merged.&#13;
+Reads and writes which are adjacent to each other may be merged for efficiency. Thus two 4K reads may become one 8K read before it is ultimately handed to the disk, and so it will be counted (and queued) as only one I/O.  This field lets you know how often this was done.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis List Squence Number of {$REDIS_LIST_KEY}</name>
+                            <name>Disk:$1:Write:ms</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_LLEN[{#REDIS_PORT},{$REDIS_LIST_KEY}]</key>
+                            <key>custom.vfs.dev.write.ms[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
+                            <units>ms</units>
+                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -477,31 +491,33 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #11&#13;
+Number of milliseconds spent writing.&#13;
+This is the total number of milliseconds spent by all writes (as measured from __make_request() to end_that_request_last()).</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>role_{#REDIS_PORT}</name>
+                            <name>Disk:$1:Write:Ops per second</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, role]</key>
+                            <key>custom.vfs.dev.write.ops[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>15</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>1</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
+                            <units>ops/s</units>
+                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -520,354 +536,22 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Field #8&#13;
+This is the total number of writes completed successfully.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>total_commands_processed_{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, total_commands_processed]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>total_connections_received_{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, total_connections_received]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>uptime_in_seconds_{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, uptime_in_seconds]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>used_memory_memfragmentationratio_{#REDIS_PORT}</name>
-                            <type>15</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats_memfragmentationratio</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params>&quot;redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, used_memory_rss]&quot;/&quot;redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},used_memory:]&quot;</params>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description>http://news.oneapm.com/cloud-insight-redis/&#13;
-fragmentation ratio &lt; 1 ,意味着 Redis 需求大于你系统可用的内存，从而导致交换。</description>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>used_memory_rss_{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, used_memory_rss:]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>used_memory_{#REDIS_PORT}</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},used_memory:]</key>
-                            <delay>60</delay>
-                            <history>15</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Redis_{#REDIS_PORT}</name>
+                                    <name>Disk Performance</name>
                                 </application>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},blocked_clients].abschange()}&gt;1</expression>
-                            <name>blocked_clients increased</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>2</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:redis_lld_stats_memfragmentationratio.last()}&lt;1</expression>
-                            <name>redis fragmentation less than 1</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>2</priority>
-                            <description>需要检查Redis内存</description>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:net.tcp.port[{#REDIS_IP},{#REDIS_PORT}].last(0)}&lt;&gt;1</expression>
-                            <name>Redis listen port {#REDIS_PORT} status unknown</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>4</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:net.tcp.port[{#REDIS_IP},{#REDIS_PORT}].count(#3,0,&quot;eq&quot;)}=3</expression>
-                            <name>Redis port {#REDIS_PORT} is not running</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>5</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},connected_clients].last()}&gt;{#REDIS_MAXCONN}</expression>
-                            <name>redis连接数连接客户端过多</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>2</priority>
-                            <description>redis中maxclients.&#13;
-可以尝试config set timeout 3600</description>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, used_memory_rss:].last(0)}&gt;{#REDIS_MAXMEM}</expression>
-                            <name>{#REDIS_IP},{#REDIS_PORT} RSS 内存使用量过高</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>3</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},used_memory:].last(0)}&gt;{#REDIS_MAXMEM}</expression>
-                            <name>{#REDIS_IP},{#REDIS_PORT}内存使用量过高</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>3</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template App Redis LLD Service:redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},used_memory:].last(0)}&gt;{#REDIS_MAXMEM}*1.2</expression>
-                            <name>{#REDIS_IP},{#REDIS_PORT}内存剩余严重不足</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>5</priority>
-                            <description/>
-                            <type>0</type>
-                        </trigger_prototype>
-                    </trigger_prototypes>
+                    <trigger_prototypes/>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Redis key_{#REDIS_PORT}</name>
+                            <name>Disk {#DEVICENAME} - Bytes/second</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -879,39 +563,39 @@ fragmentation ratio &lt; 1 ,意味着 Redis 需求大于你系统可用的内存
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
                             <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
+                            <ymin_type_1>1</ymin_type_1>
                             <ymax_type_1>0</ymax_type_1>
                             <ymin_item_1>0</ymin_item_1>
                             <ymax_item_1>0</ymax_item_1>
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>00C800</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, evicted_keys]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.read.sectors[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>1</sortorder>
-                                    <drawtype>0</drawtype>
+                                    <drawtype>5</drawtype>
                                     <color>C80000</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, expired_keys]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.write.sectors[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Redis Port Connections_{#REDIS_PORT}</name>
+                            <name>Disk {#DEVICENAME} - Merged</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -936,8 +620,8 @@ fragmentation ratio &lt; 1 ,意味着 Redis 需求大于你系统可用的内存
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},blocked_clients]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.read.merged[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -948,108 +632,156 @@ fragmentation ratio &lt; 1 ,意味着 Redis 需求大于你系统可用的内存
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},connected_clients]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.write.merged[{#DEVICENAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Disk {#DEVICENAME} - Ops/second</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00C800</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.read.ops[{#DEVICENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C80000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.write.ops[{#DEVICENAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Disk {#DEVICENAME} - Overview</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>00C8C8</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>7</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.io.active[{#DEVICENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C8C800</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>7</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.read.sectors[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>2</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>0000C8</color>
+                                    <color>960000</color>
                                     <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
+                                    <calc_fnc>7</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, connected_slave]</key>
-                                    </item>
-                                </graph_item>
-                            </graph_items>
-                        </graph_prototype>
-                        <graph_prototype>
-                            <name>Redis Used memory_{#REDIS_PORT}</name>
-                            <width>900</width>
-                            <height>200</height>
-                            <yaxismin>0.0000</yaxismin>
-                            <yaxismax>100.0000</yaxismax>
-                            <show_work_period>1</show_work_period>
-                            <show_triggers>1</show_triggers>
-                            <type>0</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>0</show_3d>
-                            <percent_left>0.0000</percent_left>
-                            <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
-                            <ymax_type_1>0</ymax_type_1>
-                            <ymin_item_1>0</ymin_item_1>
-                            <ymax_item_1>0</ymax_item_1>
-                            <graph_items>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00C800</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, used_memory_rss:]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.read.merged[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
-                                    <sortorder>1</sortorder>
+                                    <sortorder>3</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>C80000</color>
+                                    <color>C8C8C8</color>
                                     <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
+                                    <calc_fnc>7</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT},used_memory:]</key>
-                                    </item>
-                                </graph_item>
-                            </graph_items>
-                        </graph_prototype>
-                        <graph_prototype>
-                            <name>Redis_conne_and_comm_per_second_{#REDIS_PORT}</name>
-                            <width>900</width>
-                            <height>200</height>
-                            <yaxismin>0.0000</yaxismin>
-                            <yaxismax>100.0000</yaxismax>
-                            <show_work_period>1</show_work_period>
-                            <show_triggers>1</show_triggers>
-                            <type>0</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>0</show_3d>
-                            <percent_left>0.0000</percent_left>
-                            <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
-                            <ymax_type_1>0</ymax_type_1>
-                            <ymin_item_1>0</ymin_item_1>
-                            <ymax_item_1>0</ymax_item_1>
-                            <graph_items>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00C800</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, total_commands_processed,s]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.read.ops[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
-                                    <sortorder>1</sortorder>
+                                    <sortorder>4</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>C80000</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
+                                    <color>009600</color>
+                                    <yaxisside>1</yaxisside>
+                                    <calc_fnc>7</calc_fnc>
                                     <type>0</type>
                                     <item>
-                                        <host>Template App Redis LLD Service</host>
-                                        <key>redis_lld_stats[{#REDIS_IP},{#REDIS_PORT}, total_connections_received,s]</key>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.write.sectors[{#DEVICENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>5</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>960096</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>7</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.write.merged[{#DEVICENAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>6</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>000096</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>7</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template Disk Performance</host>
+                                        <key>custom.vfs.dev.write.ops[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -1058,12 +790,7 @@ fragmentation ratio &lt; 1 ,意味着 Redis 需求大于你系统可用的内存
                     <host_prototypes/>
                 </discovery_rule>
             </discovery_rules>
-            <macros>
-                <macro>
-                    <macro>{$REDIS_LIST_KEY}</macro>
-                    <value>foo</value>
-                </macro>
-            </macros>
+            <macros/>
             <templates/>
             <screens/>
         </template>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2017-11-07T07:20:17Z</date>
+    <date>2017-11-07T08:02:39Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template App Php Service</template>
-            <name>Template App Php Service</name>
+            <template>Templates_App_gitlab_status</template>
+            <name>Templates_App_gitlab_status</name>
             <description/>
             <groups>
                 <group>
@@ -19,320 +19,19 @@
             </groups>
             <applications>
                 <application>
-                    <name>php-fpm</name>
+                    <name>Gitlab_status</name>
                 </application>
             </applications>
             <items>
                 <item>
-                    <name>$6</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;listen queue len&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>$6</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;idle processes&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>$6</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;max listen queue&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>$6</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;active processes&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>$6/sec</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;total processes&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>$6/sec</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;slow requests&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>1</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>$6/sec</name>
-                    <type>10</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;accepted conn&quot;]</key>
-                    <delay>60</delay>
-                    <history>15</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>1</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>php-fpm</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>php-fpm master process</name>
+                    <name>check_gitlab-logrotate</name>
                     <type>0</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>proc.num[php-fpm,root,all,master]</key>
+                    <key>check_gitlab[logrotate]</key>
                     <delay>60</delay>
-                    <history>15</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -361,19 +60,277 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>php-fpm</name>
+                            <name>Gitlab_status</name>
                         </application>
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
                 <item>
-                    <name>Php Port Connectivity</name>
+                    <name>check_gitlab-postgresql</name>
                     <type>0</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>net.tcp.service[tcp,,9000]</key>
+                    <key>check_gitlab[postgresql]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Gitlab_status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>check_gitlab-redis</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>check_gitlab[redis]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Gitlab_status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>check_gitlab-registry</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>check_gitlab[registry]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Gitlab_status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>check_gitlab-sidekiq</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>check_gitlab[sidekiq]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Gitlab_status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>check_gitlab-unicorn</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>check_gitlab[unicorn]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Gitlab_status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>check_gitlab-workhorse</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>check_gitlab[gitlab-workhorse]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Gitlab_status</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>gitlab-server-status</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.port[127.0.0.1,8080]</key>
                     <delay>60</delay>
                     <history>15</history>
                     <trends>365</trends>
@@ -404,7 +361,7 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>php-fpm</name>
+                            <name>Gitlab_status</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -412,62 +369,85 @@
                 </item>
             </items>
             <discovery_rules/>
-            <macros>
-                <macro>
-                    <macro>{$MAX_PHP_PROCESS}</macro>
-                    <value>160</value>
-                </macro>
-                <macro>
-                    <macro>{$MIX_PHP_PROCESS}</macro>
-                    <value>5</value>
-                </macro>
-                <macro>
-                    <macro>{$PHP_FPM_PORT}</macro>
-                    <value>80</value>
-                </macro>
-                <macro>
-                    <macro>{$PHP_FPM_STATUS_URL}</macro>
-                    <value>http://127.0.0.1:80/php-fpm_status</value>
-                </macro>
-            </macros>
+            <macros/>
             <templates/>
             <screens/>
         </template>
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template App Php Service:proc.num[php-fpm,root,all,master].max(#3)}&lt;1</expression>
-            <name>php-fpm master进程数小于1</name>
+            <expression>{Templates_App_gitlab_status:check_gitlab[logrotate].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-logrotate</name>
             <url/>
             <status>0</status>
-            <priority>5</priority>
+            <priority>2</priority>
             <description/>
             <type>0</type>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template App Php Service:proc.num[php-fpm,root,all,master].max(#3)}=0</expression>
-            <name>php-fpm master进程数等于0</name>
+            <expression>{Templates_App_gitlab_status:check_gitlab[postgresql].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-postgresql</name>
             <url/>
             <status>0</status>
-            <priority>5</priority>
+            <priority>2</priority>
             <description/>
             <type>0</type>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template App Php Service:net.tcp.service[tcp,,9000].count(#2,0,&quot;eq&quot;)}=2</expression>
-            <name>Php port 9000 is not running on {HOST.NAME}</name>
+            <expression>{Templates_App_gitlab_status:check_gitlab[redis].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-redis</name>
             <url/>
             <status>0</status>
-            <priority>5</priority>
+            <priority>2</priority>
             <description/>
             <type>0</type>
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template App Php Service:getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;idle processes&quot;].last()}&lt;{$MIX_PHP_PROCESS} and {Template App Php Service:getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;total processes&quot;].last()}&gt;{$MAX_PHP_PROCESS}</expression>
-            <name>PHP空闲进程小于{$MIX_PHP_PROCESS}</name>
+            <expression>{Templates_App_gitlab_status:check_gitlab[registry].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-registry</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Templates_App_gitlab_status:check_gitlab[sidekiq].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-sidekiq</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Templates_App_gitlab_status:check_gitlab[unicorn].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-unicorn</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Templates_App_gitlab_status:check_gitlab[gitlab-workhorse].last(#3)}&lt;&gt;1</expression>
+            <name>check_gitlab-workhorse</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Templates_App_gitlab_status:net.tcp.port[127.0.0.1,8080].last(3)}&lt;&gt;1</expression>
+            <name>gitlab-server-status</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
@@ -478,7 +458,7 @@
     </triggers>
     <graphs>
         <graph>
-            <name>php-fpm Accepted Connections /sec</name>
+            <name>gitlab-server-status</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
@@ -497,102 +477,26 @@
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;accepted conn&quot;]</key>
-                    </item>
-                </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
-            <name>php-fpm Listen Queue</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
-                <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>EE0000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;listen queue len&quot;]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>00EE00</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;max listen queue&quot;]</key>
-                    </item>
-                </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
-            <name>php-fpm Processes</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
-                <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;total processes&quot;]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
                     <drawtype>0</drawtype>
                     <color>00C800</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;active processes&quot;]</key>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[logrotate]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[postgresql]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -603,40 +507,68 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;idle processes&quot;]</key>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[redis]</key>
                     </item>
                 </graph_item>
-            </graph_items>
-        </graph>
-        <graph>
-            <name>php-fpm Slow Requests / sec</name>
-            <width>900</width>
-            <height>200</height>
-            <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
-            <show_legend>1</show_legend>
-            <show_3d>0</show_3d>
-            <percent_left>0.0000</percent_left>
-            <percent_right>0.0000</percent_right>
-            <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
-            <ymin_item_1>0</ymin_item_1>
-            <ymax_item_1>0</ymax_item_1>
-            <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
+                    <sortorder>3</sortorder>
                     <drawtype>0</drawtype>
-                    <color>C80000</color>
+                    <color>C800C8</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Php Service</host>
-                        <key>getPhpInfo.py[&quot;-h&quot;,&quot;{HOST.CONN}&quot;,&quot;-p&quot;,&quot;{$PHP_FPM_PORT}&quot;,&quot;-a&quot;,&quot;slow requests&quot;]</key>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[registry]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>4</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C8C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[sidekiq]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>5</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C8C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[unicorn]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>6</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C8C8C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>check_gitlab[gitlab-workhorse]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>7</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>009600</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Templates_App_gitlab_status</host>
+                        <key>net.tcp.port[127.0.0.1,8080]</key>
                     </item>
                 </graph_item>
             </graph_items>

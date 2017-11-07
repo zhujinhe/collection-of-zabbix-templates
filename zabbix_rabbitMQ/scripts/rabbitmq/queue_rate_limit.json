@@ -1,0 +1,7 @@
+{
+  "queue_standard": {
+    "{#ZBX_INFO}": 20,
+    "{#ZBX_WARNING}": 60,
+    "{#ZBX_AVERAGE}": 90
+  }
+}

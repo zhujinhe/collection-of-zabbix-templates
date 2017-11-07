@@ -9,11 +9,10 @@ cd "$(dirname "$0")"
 
 TYPE_OF_CHECK=$1
 METRIC=$2
-#echo $HOSTNAME
+
 if [[ -z "$HOSTNAME" ]]; then
     HOSTNAME=`hostname`
 fi
-#echo $HOSTNAME
 if [[ -z "$3" ]]; then
     NODE=$3
 else

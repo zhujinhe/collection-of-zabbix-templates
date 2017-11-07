@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>2.0</version>
+    <date>2017-11-07T07:51:20Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Huoban RabbitMQ</template>
+            <name>Template Huoban RabbitMQ</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Huoban RabbitMQ</name>
+                </application>
+            </applications>
+            <items/>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>rabbitmq queues limit</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>rabbitmq.discovery_queue_limit</key>
+                    <delay>60</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>1</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Huoban RabbitMQ  $2 on vhost $1, queue $3</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>rabbitmq.queues.get[{#VHOSTNAME},messages,{#QUEUE_NAME}]</key>
+                            <delay>60</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Huoban RabbitMQ</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template Huoban RabbitMQ:rabbitmq.queues.get[{#VHOSTNAME},messages,{#QUEUE_NAME}].last(0)}&gt;{#ZBX_AVERAGE} and {Template Huoban RabbitMQ:rabbitmq.queues.get[{#VHOSTNAME},messages,{#QUEUE_NAME}].min(4m)}&gt;{#ZBX_AVERAGE}</expression>
+                            <name>{#VHOSTNAME}/{#QUEUE_NAME} - 队列大于{#ZBX_AVERAGE}并持续4分钟</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>1</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template Huoban RabbitMQ:rabbitmq.queues.get[{#VHOSTNAME},messages,{#QUEUE_NAME}].last(0)}&gt;{#ZBX_WARNING} and {Template Huoban RabbitMQ:rabbitmq.queues.get[{#VHOSTNAME},messages,{#QUEUE_NAME}].min(4m)}&gt;{#ZBX_WARNING}</expression>
+                            <name>{#VHOSTNAME}/{#QUEUE_NAME} - 队列大于{#ZBX_WARNING}并持续4分钟</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                </discovery_rule>
+            </discovery_rules>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+</zabbix_export>

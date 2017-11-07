@@ -1,0 +1,88 @@
+{
+    "data": [
+        {
+            "{#PGXL_NODETYPE}": "gtm",
+            "{#PGXL_HOST}": "db-pgxl-gtm",
+            "{#PGXL_PORT}": 20001,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "gtm",
+            "{#PGXL_HOST}": "db-pgxl-coord1",
+            "{#PGXL_PORT}": 20001,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "node",
+            "{#PGXL_HOST}": "db-pgxl-coord1",
+            "{#PGXL_PORT}": 20004,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "node",
+            "{#PGXL_HOST}": "db-pgxl-coord2",
+            "{#PGXL_PORT}": 20004,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "gtm",
+            "{#PGXL_HOST}": "db-pgxl-node1",
+            "{#PGXL_PORT}": 20001,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "node",
+            "{#PGXL_HOST}": "db-pgxl-node1",
+            "{#PGXL_PORT}": 20008,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "gtm",
+            "{#PGXL_HOST}": "db-pgxl-node2",
+            "{#PGXL_PORT}": 20001,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "node",
+            "{#PGXL_HOST}": "db-pgxl-node2",
+            "{#PGXL_PORT}": 20008,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "gtm",
+            "{#PGXL_HOST}": "db-pgxl-node3",
+            "{#PGXL_PORT}": 20001,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "node",
+            "{#PGXL_HOST}": "db-pgxl-node3",
+            "{#PGXL_PORT}": 20008,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "gtm",
+            "{#PGXL_HOST}": "db-pgxl-node4",
+            "{#PGXL_PORT}": 20001,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        },
+        {
+            "{#PGXL_NODETYPE}": "node",
+            "{#PGXL_HOST}": "db-pgxl-node4",
+            "{#PGXL_PORT}": 20008,
+            "{#PGXL_DATABASE}": "db_bi",
+            "{#PGXL_USERNAME}": "postgres"
+        }
+    ]
+}
